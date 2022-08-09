@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<AnotherScreen /> renders correctly 1`] = `
+<View>
+  <Text>
+    Open up App.tsx to start working on your app!
+  </Text>
+</View>
+`;
