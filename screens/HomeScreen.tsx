@@ -7,7 +7,7 @@ export default function HomeScreen() {
     <View>
       <Text>Open up App.tsx to start working on your app!</Text>
       <Button
-        title='Go to Details'
+        title='Go to another screen'
         onPress={() => navigate('Another')}
       />
     </View>

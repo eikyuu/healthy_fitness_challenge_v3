@@ -7,8 +7,8 @@ const Stack = createNativeStackNavigator();
 export default function Navigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Home'>
-        <Stack.Screen name='Home' component={HomeScreen} />
+      <Stack.Navigator initialRouteName='Healthy fitness challenge'>
+        <Stack.Screen name='Healthy fitness challenge' component={HomeScreen} />
         <Stack.Screen name='Another' component={AnotherScreen} />
       </Stack.Navigator>
     </NavigationContainer>
