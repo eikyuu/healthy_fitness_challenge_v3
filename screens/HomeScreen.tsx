@@ -1,36 +1,27 @@
-import {
-  NavigationProp,
-  ParamListBase,
-  useNavigation,
-} from '@react-navigation/native';
-import { Button, ImageBackground, Text, View, StyleSheet } from 'react-native';
+import { ImageBackground, View, StyleSheet, StatusBar } from 'react-native';
 import NavigationBtn from '../components/NavigationBtn';
+import metrics from '../themes/metrics';
 
 export default function HomeScreen() {
-  const { navigate } = useNavigation<NavigationProp<ParamListBase>>();
   return (
-    <View style={styles.container}>
-      <ImageBackground
-        source={require('../assets/images/backgroundImage.jpeg')}
-        resizeMode='cover'
-        style={styles.image}
-      >
-        <NavigationBtn 
-          title='Another'
-          routeName='Another'
-        />
-        <NavigationBtn 
-          title='Another'
-          routeName='Another'
-        />
-      </ImageBackground>
-    </View>
+    <ImageBackground
+      source={require('../assets/images/backgroundImage.jpeg')}
+      style={styles.image}
+    >
+      <View style={styles.container}>
+        <NavigationBtn title='Challenges' routeName='ChallengeBody' />
+        <NavigationBtn title='Mes challenges' routeName='Another' />
+        <NavigationBtn title='Mon profil' routeName='Another' />
+
+      </View>
+    </ImageBackground>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
+    marginTop: - metrics.navBarHeight,
   },
   image: {
     flex: 1,

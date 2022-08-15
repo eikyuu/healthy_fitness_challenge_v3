@@ -1,8 +1,8 @@
 const colors = {
-    primary: '#65b891',
-    secondary: '#93e5ab',
-    tertiary: '#f5f5f5',
-    quaternary: '#f5f5f5',
+    primary: '#FBA90A',
+    secondary: '#FDCD6D',
+    tertiary: '#9C6902',
+    quaternary: '#342609',
     white: '#fff',
     error: '#f44336',
     warning: '#ffeb3b',
