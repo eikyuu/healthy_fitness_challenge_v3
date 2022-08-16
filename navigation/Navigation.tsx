@@ -6,6 +6,7 @@ import colors from '../themes/colors';
 import font from '../themes/font';
 import ChallengeBodyScreen from '../screens/ChallengeBodyScreen';
 import SelectExoScreen from '../screens/SelectExoScreen';
+import ChallengeScreen from '../screens/ChallengeScreen';
 const Stack = createNativeStackNavigator();
 
 export default function Navigation() {
@@ -30,6 +31,7 @@ export default function Navigation() {
         />
         <Stack.Screen name='Another' component={AnotherScreen} />
         <Stack.Screen name='ChallengeSelectExo' component={SelectExoScreen} />
+        <Stack.Screen name='CreateChallenge' component={ChallengeScreen} />
         <Stack.Screen name='ChallengeBody' component={ChallengeBodyScreen} options={{
           title: 'Choississez une partie du corps',
           headerStyle: {

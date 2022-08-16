@@ -1,33 +1,43 @@
+import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 import { useEffect, useState } from 'react';
-import { FlatList, Image, Pressable, StyleSheet } from 'react-native';
+import {
+  ActivityIndicator,
+  FlatList,
+  Image,
+  Pressable,
+  StyleSheet,
+  View,
+} from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { getByPartBody, getByTarget } from '../_services/muscleJpApi';
+import { getByPartBody } from '../_services/muscleJpApi';
 
 export default function SelectExoScreen({ route }: any) {
+  const { navigate } = useNavigation<NavigationProp<ParamListBase>>();
   const { exo } = route.params;
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true);
       try {
         const response = await getByPartBody(exo);
         setData(response);
-        console.log(response[0]);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       } finally {
-        console.log('finally');
+        setLoading(false);
       }
     };
     fetchData();
+    return () => {
+      setData([]);
+    };
   }, []);
 
   const renderItem = ({ item }: { item: any }) => (
     <Pressable
-      onPress={() => {
-        console.log('toot');
-      }}
+    onPress={() => navigate('CreateChallenge', { exo: item.nom })}
     >
       <Image
         style={styles.image}
@@ -38,6 +48,14 @@ export default function SelectExoScreen({ route }: any) {
       />
     </Pressable>
   );
+
+  if (loading) {
+    return (
+      <View style={styles.container}>
+        <ActivityIndicator size='large' />
+      </View>
+    );
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -54,6 +72,7 @@ export default function SelectExoScreen({ route }: any) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
     marginTop: 0,
   },
