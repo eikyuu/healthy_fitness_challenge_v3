@@ -25,7 +25,7 @@ export const getByPartBody = (body: string) => {
 
 export const getByName = (name: string) => {
   return axios
-    .get(`${url}get-name/${name}`, options)
+    .get(`${url}get-nom/${name}`, options)
     .then((response) => (response.data))
     .catch((error) => ({ error }));
 };

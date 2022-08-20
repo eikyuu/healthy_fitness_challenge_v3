@@ -1,14 +1,13 @@
 import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
 import { useEffect, useState } from 'react';
 import {
-  ActivityIndicator,
   FlatList,
   Image,
   Pressable,
   StyleSheet,
-  View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import Loading from '../components/Loading';
 import { getByPartBody } from '../_services/muscleJpApi';
 
 export default function SelectExoScreen({ route }: any) {
@@ -51,9 +50,7 @@ export default function SelectExoScreen({ route }: any) {
 
   if (loading) {
     return (
-      <View style={styles.container}>
-        <ActivityIndicator size='large' />
-      </View>
+      <Loading/>
     );
   }
 

@@ -30,10 +30,9 @@ export default function Navigation() {
           }}
         />
         <Stack.Screen name='Another' component={AnotherScreen} />
-        <Stack.Screen name='ChallengeSelectExo' component={SelectExoScreen} />
-        <Stack.Screen name='CreateChallenge' component={ChallengeScreen} />
-        <Stack.Screen name='ChallengeBody' component={ChallengeBodyScreen} options={{
-          title: 'Choississez une partie du corps',
+        <Stack.Screen name='ChallengeSelectExo' component={SelectExoScreen}
+        options={{
+          title: 'Choississez un exercice',
           headerStyle: {
             backgroundColor: colors.primary,
           },
@@ -43,7 +42,40 @@ export default function Navigation() {
             fontWeight: 'bold',
             fontSize: font.size.font12,
           },
-        }}/>
+        }}
+        />
+        <Stack.Screen
+          name='CreateChallenge'
+          component={ChallengeScreen}
+          options={{
+            title: 'Détails de l\'exercice', 
+            headerStyle: {
+              backgroundColor: colors.primary,
+            },
+            headerTintColor: colors.white,
+            headerTransparent: false,
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              fontSize: font.size.font12,
+            },
+          }}
+        />
+        <Stack.Screen
+          name='ChallengeBody'
+          component={ChallengeBodyScreen}
+          options={{
+            title: 'Choississez une partie du corps',
+            headerStyle: {
+              backgroundColor: colors.primary,
+            },
+            headerTintColor: colors.white,
+            headerTransparent: false,
+            headerTitleStyle: {
+              fontWeight: 'bold',
+              fontSize: font.size.font12,
+            },
+          }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
