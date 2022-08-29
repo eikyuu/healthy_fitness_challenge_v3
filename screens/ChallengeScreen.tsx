@@ -1,22 +1,32 @@
 import { useEffect, useState } from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
+import {
+  SafeAreaView,
+  ScrollView,
+  StyleSheet,
+  Text,
+  View
+} from 'react-native';
+import Description from '../components/challengeScreen/Description';
+import Header from '../components/challengeScreen/Header';
+import Video from '../components/challengeScreen/Video';
 import Loading from '../components/Loading';
 import { getByName } from '../_services/muscleJpApi';
+import { getYoutubeVideo } from '../_services/youtubeApi';
 
 export default function ChallengeScreen({ route }: any) {
   const { exo } = route.params;
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
-
-  console.log(exo);
+  const [video, setVideo] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       try {
         const response = await getByName(exo);
+        const responseYoutube = await getYoutubeVideo(exo);
+        setVideo(responseYoutube.items);
         setData(response);
-        console.log(response[0]);
       } catch (error) {
         console.error(error);
       } finally {
@@ -34,32 +44,18 @@ export default function ChallengeScreen({ route }: any) {
   }
 
   return (
-    <View style={styles.container}>
-      <View style={styles.header}>
+    <SafeAreaView style={styles.container}>
+      <ScrollView>
+        <Header data={data} />
+        <Description description={data[0].description} />
 
-        <View style={styles.toto}>
-          <Image
-            style={styles.image}
-            source={{
-              uri: data[0].img,
-            }}
-            resizeMode='contain'
-          />
+        <View style={styles.containerDescription}>
+          <Text style={styles.titleDescription}>Créer un challenge :</Text>
         </View>
 
-        <View style={styles.totoUn}>
-          <Text style={styles.title}>{data[0].nom}</Text>
-          <Text style={styles.equipment}>Equipement : haltere barre</Text>
-        </View>
-        
-      </View>
-
-
-      <View style={styles.containerDescription}>
-        <Text style={styles.titleDescription}>Description :</Text>
-        <Text>{data[0].description}</Text>
-      </View>
-    </View>
+        <Video video={video} />
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
@@ -68,43 +64,13 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
-  header: {
-    flexDirection: 'row',
-    width: '100%',
-    marginTop: 10,
-  },
-  toto : {
-    width: '30%',
-    alignItems: 'center',
-  },
-  totoUn : {
-    width: '70%',
-    alignItems: 'center',
-  },
   containerDescription: {
     padding: 10,
+    marginBottom: 10,
   },
   titleDescription: {
     fontWeight: 'bold',
     marginBottom: 10,
     fontSize: 20,
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 10,
-    textTransform: 'uppercase',
-  },
-  equipment: {
-    fontSize: 16,
-    marginBottom: 10,
-  },
-  image: {
-    width: 100,
-    height: 100,
-    borderRadius: 3,
-    borderWidth: 0.5,
-    borderColor: '#000',
-    backgroundColor: '#fff',
   },
 });

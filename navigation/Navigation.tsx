@@ -48,7 +48,7 @@ export default function Navigation() {
           name='CreateChallenge'
           component={ChallengeScreen}
           options={{
-            title: 'Détails de l\'exercice', 
+            title: 'Description de l\'exercice',
             headerStyle: {
               backgroundColor: colors.primary,
             },
