@@ -13,7 +13,7 @@ export default function Video({ video }: any) {
 
   const renderVideo = video.map((vid: { id: { videoId: string | undefined; }; }) => (
     <YoutubePlayer
-      key={video.id}
+      key={Math.random()}
       height={220}
       play={playing}
       videoId={vid.id.videoId}
@@ -23,7 +23,7 @@ export default function Video({ video }: any) {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Video :</Text>
+      <Text style={styles.title}>Démonstration video :</Text>
       {renderVideo}
     </View>
   );

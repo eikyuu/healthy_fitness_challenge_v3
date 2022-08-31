@@ -7,6 +7,7 @@ import {
   View
 } from 'react-native';
 import Description from '../components/challengeScreen/Description';
+import Form from '../components/challengeScreen/Form';
 import Header from '../components/challengeScreen/Header';
 import Video from '../components/challengeScreen/Video';
 import Loading from '../components/Loading';
@@ -51,6 +52,7 @@ export default function ChallengeScreen({ route }: any) {
 
         <View style={styles.containerDescription}>
           <Text style={styles.titleDescription}>Créer un challenge :</Text>
+          <Form name={data[0].nom}/>
         </View>
 
         <Video video={video} />

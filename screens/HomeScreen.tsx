@@ -1,8 +1,11 @@
 import { ImageBackground, View, StyleSheet, StatusBar } from 'react-native';
 import NavigationBtn from '../components/NavigationBtn';
 import metrics from '../themes/metrics';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useEffect } from 'react';
 
 export default function HomeScreen() {
+
   return (
     <ImageBackground
       source={require('../assets/images/backgroundImage.jpeg')}
@@ -12,7 +15,6 @@ export default function HomeScreen() {
         <NavigationBtn title='Challenges' routeName='ChallengeBody' />
         <NavigationBtn title='Mes challenges' routeName='Another' />
         <NavigationBtn title='Mon profil' routeName='Another' />
-
       </View>
     </ImageBackground>
   );
@@ -21,7 +23,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: 'center',
-    marginTop: - metrics.navBarHeight,
+    marginTop: -metrics.navBarHeight,
   },
   image: {
     flex: 1,
