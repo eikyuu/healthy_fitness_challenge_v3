@@ -11,6 +11,10 @@ export default function Video({ video }: any) {
     }
   }, []);
 
+  if (video === undefined) {
+    return <View />;
+  }
+
   const renderVideo = video.map((vid: { id: { videoId: string | undefined; }; }) => (
     <YoutubePlayer
       key={Math.random()}

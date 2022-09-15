@@ -12,77 +12,82 @@ import {
 } from 'react-native';
 import colors from '../themes/colors';
 import metrics from '../themes/metrics';
+import { ErrorHandler } from '../_utils/ErrorBoundary';
 
 export default function ChallengeBodyScreen() {
   const { navigate } = useNavigation<NavigationProp<ParamListBase>>();
 
   return (
-    <ImageBackground
-      source={require('../assets/images/body.png')}
-      style={styles.image}
-      resizeMode='contain'
-    >
-      <View style={styles.container}>
-        <View>
-          <Pressable
-            style={styles.button}
-            onPress={() => navigate('ChallengeSelectExo', { exo: 'bras' })}
-          >
-            <Text style={styles.text}>Bras</Text>
-          </Pressable>
-          <Pressable
-            style={styles.button}
-            onPress={() => navigate('ChallengeSelectExo', { exo: 'avant-bras' })}
-
-          >
-            <Text style={styles.text}>Avant-bras</Text>
-          </Pressable>
-          <Pressable
-            style={styles.button}
-            onPress={() => navigate('ChallengeSelectExo', { exo: 'épaules' })}
-
-          >
-            <Text style={styles.text}>Epaules</Text>
-          </Pressable>
-          <Pressable
-            style={styles.button}
-            onPress={() => navigate('ChallengeSelectExo', { exo: 'pectauraux' })}
-          >
-            <Text style={styles.text}>Pectauraux</Text>
-          </Pressable>
+    <ErrorHandler>
+      <ImageBackground
+        source={require('../assets/images/body.png')}
+        style={styles.image}
+        resizeMode='contain'
+      >
+        <View style={styles.container}>
+          <View>
+            <Pressable
+              style={styles.button}
+              onPress={() => navigate('ChallengeSelectExo', { exo: 'bras' })}
+            >
+              <Text style={styles.text}>Bras</Text>
+            </Pressable>
+            <Pressable
+              style={styles.button}
+              onPress={() =>
+                navigate('ChallengeSelectExo', { exo: 'avant-bras' })
+              }
+            >
+              <Text style={styles.text}>Avant-bras</Text>
+            </Pressable>
+            <Pressable
+              style={styles.button}
+              onPress={() => navigate('ChallengeSelectExo', { exo: 'épaules' })}
+            >
+              <Text style={styles.text}>Epaules</Text>
+            </Pressable>
+            <Pressable
+              style={styles.button}
+              onPress={() =>
+                navigate('ChallengeSelectExo', { exo: 'pectauraux' })
+              }
+            >
+              <Text style={styles.text}>Pectauraux</Text>
+            </Pressable>
+          </View>
+          <View>
+            <Pressable
+              style={styles.button}
+              onPress={() => navigate('ChallengeSelectExo', { exo: 'dos' })}
+            >
+              <Text style={styles.text}>Dos</Text>
+            </Pressable>
+            <Pressable
+              style={styles.button}
+              onPress={() => navigate('ChallengeSelectExo', { exo: 'jambes' })}
+            >
+              <Text style={styles.text}>Jambes</Text>
+            </Pressable>
+            <Pressable
+              style={styles.button}
+              onPress={() =>
+                navigate('ChallengeSelectExo', { exo: 'fessiers' })
+              }
+            >
+              <Text style={styles.text}>Fessiers</Text>
+            </Pressable>
+            <Pressable
+              style={styles.button}
+              onPress={() =>
+                navigate('ChallengeSelectExo', { exo: 'abdominaux' })
+              }
+            >
+              <Text style={styles.text}>Abdominaux</Text>
+            </Pressable>
+          </View>
         </View>
-        <View>
-          <Pressable
-            style={styles.button}
-            onPress={() => navigate('ChallengeSelectExo', { exo: 'dos' })}
-
-          >
-            <Text style={styles.text}>Dos</Text>
-          </Pressable>
-          <Pressable
-            style={styles.button}
-            onPress={() => navigate('ChallengeSelectExo', { exo: 'jambes' })}
-
-          >
-            <Text style={styles.text}>Jambes</Text>
-          </Pressable>
-          <Pressable
-            style={styles.button}
-            onPress={() => navigate('ChallengeSelectExo', { exo: 'fessiers' })}
-
-          >
-            <Text style={styles.text}>Fessiers</Text>
-          </Pressable>
-          <Pressable
-            style={styles.button}
-            onPress={() => navigate('ChallengeSelectExo', { exo: 'abdominaux' })}
-
-          >
-            <Text style={styles.text}>Abdominaux</Text>
-          </Pressable>
-        </View>
-      </View>
-    </ImageBackground>
+      </ImageBackground>
+    </ErrorHandler>
   );
 }
 

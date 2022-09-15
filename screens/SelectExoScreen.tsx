@@ -1,14 +1,14 @@
-import { NavigationProp, ParamListBase, useNavigation } from '@react-navigation/native';
-import { useEffect, useState } from 'react';
 import {
-  FlatList,
-  Image,
-  Pressable,
-  StyleSheet,
-} from 'react-native';
+  NavigationProp,
+  ParamListBase,
+  useNavigation,
+} from '@react-navigation/native';
+import { useEffect, useState } from 'react';
+import { FlatList, Image, Pressable, StyleSheet } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Loading from '../components/Loading';
 import { getByPartBody } from '../_services/muscleJpApi';
+import { ErrorHandler } from '../_utils/ErrorBoundary';
 
 export default function SelectExoScreen({ route }: any) {
   const { navigate } = useNavigation<NavigationProp<ParamListBase>>();
@@ -35,9 +35,7 @@ export default function SelectExoScreen({ route }: any) {
   }, []);
 
   const renderItem = ({ item }: { item: any }) => (
-    <Pressable
-    onPress={() => navigate('CreateChallenge', { exo: item.nom })}
-    >
+    <Pressable onPress={() => navigate('CreateChallenge', { exo: item.nom })}>
       <Image
         style={styles.image}
         source={{
@@ -49,20 +47,20 @@ export default function SelectExoScreen({ route }: any) {
   );
 
   if (loading) {
-    return (
-      <Loading/>
-    );
+    return <Loading />;
   }
 
   return (
-    <SafeAreaView style={styles.container}>
-      <FlatList
-        data={data}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-        numColumns={3}
-      />
-    </SafeAreaView>
+    <ErrorHandler>
+      <SafeAreaView style={styles.container}>
+        <FlatList
+          data={data}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+          numColumns={3}
+        />
+      </SafeAreaView>
+    </ErrorHandler>
   );
 }
 

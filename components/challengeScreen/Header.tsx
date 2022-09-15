@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Image, StyleSheet, Text, View } from 'react-native';
 
-export default function Header({ data }: any) {
+export default function Header({ data }: any) { 
 
   const renderEquipment = (equipment: any) => {
     if (Array.isArray(equipment)) {
