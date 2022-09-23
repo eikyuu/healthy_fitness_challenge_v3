@@ -1,22 +1,10 @@
-import {
-  NavigationProp,
-  ParamListBase,
-  useNavigation,
-} from '@react-navigation/native';
-import {
-  ImageBackground,
-  Pressable,
-  StyleSheet,
-  Text,
-  View,
-} from 'react-native';
+import { ImageBackground, StyleSheet, View } from 'react-native';
+import PressableButtonNavigate from '../components/PressableButtonNavigate';
 import colors from '../themes/colors';
 import metrics from '../themes/metrics';
 import { ErrorHandler } from '../_utils/ErrorBoundary';
 
 export default function ChallengeBodyScreen() {
-  const { navigate } = useNavigation<NavigationProp<ParamListBase>>();
-
   return (
     <ErrorHandler>
       <ImageBackground
@@ -26,64 +14,48 @@ export default function ChallengeBodyScreen() {
       >
         <View style={styles.container}>
           <View>
-            <Pressable
-              style={styles.button}
-              onPress={() => navigate('ChallengeSelectExo', { exo: 'bras' })}
-            >
-              <Text style={styles.text}>Bras</Text>
-            </Pressable>
-            <Pressable
-              style={styles.button}
-              onPress={() =>
-                navigate('ChallengeSelectExo', { exo: 'avant-bras' })
-              }
-            >
-              <Text style={styles.text}>Avant-bras</Text>
-            </Pressable>
-            <Pressable
-              style={styles.button}
-              onPress={() => navigate('ChallengeSelectExo', { exo: 'épaules' })}
-            >
-              <Text style={styles.text}>Epaules</Text>
-            </Pressable>
-            <Pressable
-              style={styles.button}
-              onPress={() =>
-                navigate('ChallengeSelectExo', { exo: 'pectauraux' })
-              }
-            >
-              <Text style={styles.text}>Pectauraux</Text>
-            </Pressable>
+            <PressableButtonNavigate
+              title='Bras'
+              routeName='ChallengeSelectExo'
+              type='bras'
+            />
+            <PressableButtonNavigate
+              title='Avant-bras'
+              routeName='ChallengeSelectExo'
+              type='avant-bras'
+            />
+            <PressableButtonNavigate
+              title='Epaules'
+              routeName='ChallengeSelectExo'
+              type='épaules'
+            />
+            <PressableButtonNavigate
+              title='Pectauraux'
+              routeName='ChallengeSelectExo'
+              type='pectauraux'
+            />
           </View>
           <View>
-            <Pressable
-              style={styles.button}
-              onPress={() => navigate('ChallengeSelectExo', { exo: 'dos' })}
-            >
-              <Text style={styles.text}>Dos</Text>
-            </Pressable>
-            <Pressable
-              style={styles.button}
-              onPress={() => navigate('ChallengeSelectExo', { exo: 'jambes' })}
-            >
-              <Text style={styles.text}>Jambes</Text>
-            </Pressable>
-            <Pressable
-              style={styles.button}
-              onPress={() =>
-                navigate('ChallengeSelectExo', { exo: 'fessiers' })
-              }
-            >
-              <Text style={styles.text}>Fessiers</Text>
-            </Pressable>
-            <Pressable
-              style={styles.button}
-              onPress={() =>
-                navigate('ChallengeSelectExo', { exo: 'abdominaux' })
-              }
-            >
-              <Text style={styles.text}>Abdominaux</Text>
-            </Pressable>
+            <PressableButtonNavigate
+              title='Dos'
+              routeName='ChallengeSelectExo'
+              type='dos'
+            />
+            <PressableButtonNavigate
+              title='Jambes'
+              routeName='ChallengeSelectExo'
+              type='jambes'
+            />
+            <PressableButtonNavigate
+              title='Fessiers'
+              routeName='ChallengeSelectExo'
+              type='fessiers'
+            />
+            <PressableButtonNavigate
+              title='Abdominaux'
+              routeName='ChallengeSelectExo'
+              type='abdominaux'
+            />
           </View>
         </View>
       </ImageBackground>

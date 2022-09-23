@@ -7,7 +7,6 @@ import {
 import { useEffect, useState } from 'react';
 import {
   Alert,
-  Button,
   Pressable,
   SafeAreaView,
   ScrollView,
@@ -47,7 +46,6 @@ interface challenge {
 
 export default function ChallengeScreen({ route }: any) {
   const { navigate } = useNavigation<NavigationProp<ParamListBase>>();
-
   const { exo, edit, id } = route.params;
   const [data, setData] = useState<data[]>([]);
   const [loading, setLoading] = useState(true);
