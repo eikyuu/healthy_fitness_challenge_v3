@@ -15,47 +15,57 @@ export default function ChallengeBodyScreen() {
         <View style={styles.container}>
           <View>
             <PressableButtonNavigate
-              title='Bras'
+              title='Dos'
               routeName='ChallengeSelectExo'
-              type='bras'
+              type='back'
+            />
+            <PressableButtonNavigate
+              title='Cardio'
+              routeName='ChallengeSelectExo'
+              type='cardio'
+            />
+            <PressableButtonNavigate
+              title='poitrine'
+              routeName='ChallengeSelectExo'
+              type='chest'
             />
             <PressableButtonNavigate
               title='Avant-bras'
               routeName='ChallengeSelectExo'
-              type='avant-bras'
-            />
-            <PressableButtonNavigate
-              title='Epaules'
-              routeName='ChallengeSelectExo'
-              type='épaules'
-            />
-            <PressableButtonNavigate
-              title='Pectauraux'
-              routeName='ChallengeSelectExo'
-              type='pectauraux'
+              type='lower arms'
             />
           </View>
           <View>
             <PressableButtonNavigate
-              title='Dos'
+              title='Bas des jambes'
               routeName='ChallengeSelectExo'
-              type='dos'
+              type='lower legs'
+            />
+            {/* <PressableButtonNavigate
+              title='Cou'
+              routeName='ChallengeSelectExo'
+              type='neck'
+            /> */}
+            {/* <PressableButtonNavigate
+              title='Epaules'
+              routeName='ChallengeSelectExo'
+              type='shoulders'
+            />*/}
+            <PressableButtonNavigate
+              title='Haut des bras'
+              routeName='ChallengeSelectExo'
+              type='upper arms'
             />
             <PressableButtonNavigate
-              title='Jambes'
+              title='Haut des jambes'
               routeName='ChallengeSelectExo'
-              type='jambes'
+              type='upper arms'
             />
             <PressableButtonNavigate
-              title='Fessiers'
+              title='Taille'
               routeName='ChallengeSelectExo'
-              type='fessiers'
-            />
-            <PressableButtonNavigate
-              title='Abdominaux'
-              routeName='ChallengeSelectExo'
-              type='abdominaux'
-            />
+              type='waist'
+            /> 
           </View>
         </View>
       </ImageBackground>

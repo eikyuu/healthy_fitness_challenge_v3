@@ -5,48 +5,41 @@ const API_KEY = process.env.REACT_APP_API_KEY_MUSCLEJP!;
 const options = {
   headers: {
     'X-RapidAPI-Key': API_KEY,
-    'X-RapidAPI-Host': 'musclejp.p.rapidapi.com',
+    'X-RapidAPI-Host': 'exercisedb.p.rapidapi.com',
   },
 };
 
-const url = 'https://musclejp.p.rapidapi.com/';
-
-export const getByTarget = (target: string) => {
-  return axios
-    .get(`${url}get-cible/${target}`, options)
-    .then((response) => response.data)
-    .catch((error) => ({ error }));
-};
+const url = 'https://exercisedb.p.rapidapi.com/';
 
 export const getByPartBody = (body: string) => {
   return axios
-    .get(`${url}get-partie-du-corps/${body}`, options)
+    .get(`${url}exercises/bodyPart/${body}`, options)
     .then((response) => response.data)
     .catch((error) => console.log(error));
 };
 
 export const getByName = (name: string) => {
   return axios
-    .get(`${url}get-nom/${name}`, options)
+    .get(`${url}exercises/name/${name}`, options)
     .then((response) => response.data)
     .catch((error) => ({ error }));
 };
 
 export const getByEquipment = (equipment: string) => {
   return axios
-    .get(`${url}get-equipement/${equipment}`, options)
+    .get(`${url}exercises/equipment/${equipment}`, options)
     .then((response) => response.data)
     .catch((error) => ({ error }));
 };
 export const getById = (id: string) => {
   return axios
-    .get(`${url}get-id/${id}`, options)
+    .get(`${url}exercises/exercise/${id}`, options)
     .then((response) => response.data)
     .catch((error) => ({ error }));
 };
 export const getAll = () => {
   return axios
-    .get(`${url}get-tous`, options)
+    .get(`${url}exercises`, options)
     .then((response) => response.data)
     .catch((error) => ({ error }));
 };

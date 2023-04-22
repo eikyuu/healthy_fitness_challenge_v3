@@ -25,13 +25,12 @@ import { getYoutubeVideo } from '../_services/youtubeApi';
 import { ErrorHandler } from '../_utils/ErrorBoundary';
 
 interface data {
-  cible: string[];
-  description: string;
-  equipement: string[];
+  target: string;
+  equipement: string;
   id: string;
-  img: string;
-  nom: string;
-  partie: string;
+  gifUrl: string;
+  name: string;
+  bodypart: string;
 }
 
 interface challenge {
@@ -150,11 +149,11 @@ export default function ChallengeScreen({ route }: any) {
       <SafeAreaView style={styles.container}>
         <ScrollView>
           <Header data={data} />
-          <Description description={data[0].description} />
+          {/* <Description description={data[0].description} /> */}
           {edit !== true && (
             <View style={styles.containerDescription}>
               <Text style={styles.titleDescription}>Créer un challenge :</Text>
-              <Form name={data[0].nom} />
+              <Form name={data[0].name} />
             </View>
           )}
 

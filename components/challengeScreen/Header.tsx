@@ -25,14 +25,14 @@ export default function Header({ data }: any) {
         <Image
           style={styles.image}
           source={{
-            uri: data[0].img,
+            uri: data[0].gifUrl,
           }}
           resizeMode='contain'
         />
       </View>
 
       <View style={styles.totoUn}>
-        <Text style={styles.title}>{data[0].nom}</Text>
+        <Text style={styles.title}>{data[0].name}</Text>
         <Text style={styles.titleDescription}>Equipement : </Text>
         {renderEquipment(data[0].equipement)}
       </View>

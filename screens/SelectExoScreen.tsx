@@ -20,6 +20,7 @@ export default function SelectExoScreen({ route }: any) {
     const fetchData = async () => {
       setLoading(true);
       try {
+        console.log(exo);
         const response = await getByPartBody(exo);
         setData(response);
       } catch (error) {
@@ -35,11 +36,11 @@ export default function SelectExoScreen({ route }: any) {
   }, []);
 
   const renderItem = ({ item }: { item: any }) => (
-    <Pressable onPress={() => navigate('CreateChallenge', { exo: item.nom })}>
+    <Pressable onPress={() => navigate('CreateChallenge', { exo: item.name })}>
       <Image
         style={styles.image}
         source={{
-          uri: item.img,
+          uri: item.gifUrl,
         }}
         resizeMode='contain'
       />
