@@ -33,8 +33,8 @@ export default function Header({ data }: any) {
 
       <View style={styles.totoUn}>
         <Text style={styles.title}>{data[0].name}</Text>
-        <Text style={styles.titleDescription}>Equipement : </Text>
-        {renderEquipment(data[0].equipement)}
+            {/* <Text style={styles.titleDescription}>Equipement : </Text>
+            {renderEquipment(data[0].equipement)} */}
       </View>
     </View>
   );

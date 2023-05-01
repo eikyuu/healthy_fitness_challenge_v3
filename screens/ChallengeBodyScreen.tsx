@@ -41,16 +41,6 @@ export default function ChallengeBodyScreen() {
               routeName='ChallengeSelectExo'
               type='lower legs'
             />
-            {/* <PressableButtonNavigate
-              title='Cou'
-              routeName='ChallengeSelectExo'
-              type='neck'
-            /> */}
-            {/* <PressableButtonNavigate
-              title='Epaules'
-              routeName='ChallengeSelectExo'
-              type='shoulders'
-            />*/}
             <PressableButtonNavigate
               title='Haut des bras'
               routeName='ChallengeSelectExo'

@@ -45,7 +45,7 @@ interface challenge {
 
 export default function ChallengeScreen({ route }: any) {
   const { navigate } = useNavigation<NavigationProp<ParamListBase>>();
-  const { exo, edit, id } = route.params;
+  const { exo, edit, id, day, duration } = route.params;
   const [data, setData] = useState<data[]>([]);
   const [loading, setLoading] = useState(true);
   const [video, setVideo] = useState([]);
@@ -159,15 +159,18 @@ export default function ChallengeScreen({ route }: any) {
 
           {edit === true && (
             <>
+            { day < duration && (
               <Pressable style={styles.input} onPress={() => pressedValider()}>
                 <Text>Finir mon challenge du jours</Text>
               </Pressable>
+            )
+            }
               <Pressable style={styles.input} onPress={() => pressedDelete()}>
                 <Text>Supprimer mon challenge</Text>
               </Pressable>
             </>
           )}
-
+          
           <Video video={video} />
         </ScrollView>
       </SafeAreaView>

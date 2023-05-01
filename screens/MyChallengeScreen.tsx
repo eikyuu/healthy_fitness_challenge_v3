@@ -56,6 +56,8 @@ export default function MyChallengeScreen() {
               exo: challenge.nameExo,
               edit: true,
               id: challenge.id,
+              day: challenge.days,
+              duration: challenge.durationChallenge,
             })
           }
           style={styles.container}
