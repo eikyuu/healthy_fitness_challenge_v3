@@ -9,6 +9,8 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import Loading from '../components/Loading';
 import { getByPartBody } from '../_services/muscleJpApi';
 import { ErrorHandler } from '../_utils/ErrorBoundary';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { storeData } from '../_utils/Cache';
 
 export default function SelectExoScreen({ route }: any) {
   const { navigate } = useNavigation<NavigationProp<ParamListBase>>();
@@ -20,9 +22,17 @@ export default function SelectExoScreen({ route }: any) {
     const fetchData = async () => {
       setLoading(true);
       try {
-        console.log(exo);
-        const response = await getByPartBody(exo);
-        setData(response);
+        const value = await AsyncStorage.getItem(`${exo}-select-exo`)
+
+        if (value !== null) {
+          setData(JSON.parse(value));
+        } else {
+          const response = await getByPartBody(exo);
+          setData(response);
+          // store data in cache
+          storeData(response, `${exo}-select-exo`);
+        }
+
       } catch (error) {
         console.error(error);
       } finally {

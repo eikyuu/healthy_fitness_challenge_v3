@@ -23,6 +23,7 @@ import colors from '../themes/colors';
 import { getByName } from '../_services/muscleJpApi';
 import { getYoutubeVideo } from '../_services/youtubeApi';
 import { ErrorHandler } from '../_utils/ErrorBoundary';
+import { storeData } from '../_utils/Cache';
 
 interface data {
   target: string;
@@ -62,10 +63,30 @@ export default function ChallengeScreen({ route }: any) {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const response = await getByName(exo);
-        const responseYoutube = await getYoutubeVideo(exo);
-        setVideo(responseYoutube.items);
-        setData(response);
+
+        const value = await AsyncStorage.getItem(`${exo}-challenge`);
+
+        if (value !== null) {
+          setData(JSON.parse(value));
+        } else {
+          const response = await getByName(exo);
+          setData(response);
+          // store data in cache
+          storeData(response, `${exo}-challenge`);
+        }
+
+        const valueVideo = await AsyncStorage.getItem(`${exo}-video`);
+
+        if (valueVideo !== null) {
+          console.log('video from cache', JSON.parse(valueVideo));
+          setVideo(JSON.parse(valueVideo));
+        } else {
+          const responseYoutube = await getYoutubeVideo(exo);
+          setVideo(responseYoutube.items);
+          // store data in cache
+          storeData(responseYoutube.items, `${exo}-video`);
+        }
+
       } catch (error) {
         console.error(error);
       } finally {
