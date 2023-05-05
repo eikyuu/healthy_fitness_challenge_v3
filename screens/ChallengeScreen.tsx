@@ -14,7 +14,6 @@ import {
   Text,
   View,
 } from 'react-native';
-import Description from '../components/challengeScreen/Description';
 import Form from '../components/challengeScreen/Form';
 import Header from '../components/challengeScreen/Header';
 import Video from '../components/challengeScreen/Video';
