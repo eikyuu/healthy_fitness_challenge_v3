@@ -13,12 +13,12 @@ const Stack = createNativeStackNavigator();
 export default function Navigation() {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='Fitness challenge'>
+      <Stack.Navigator initialRouteName='Healthy Fitness Challenge'>
         <Stack.Screen
-          name='Fitness challenge'
+          name='Healthy Fitness Challenge'
           component={HomeScreen}
           options={{
-            title: 'Fitness challenge',
+            title: 'Healthy Fitness Challenge',
             headerStyle: {
               backgroundColor: colors.primary,
             },
